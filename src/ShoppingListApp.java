@@ -83,6 +83,13 @@ public class ShoppingListApp {
             System.out.println("shopping list empty");
         } else {
             System.out.println(shoppingList);
+            Double price = 0.0;
+            for (int i = 0; i < shoppingList.size(); i++) {
+                price += shoppingList.get(i).getPrice();
+            }
+            int items = shoppingList.size();
+            System.out.println("Total Items: " + items);
+            System.out.println("Total Price: " + price);
         }
     }
 
@@ -91,6 +98,12 @@ public class ShoppingListApp {
         scan = new Scanner(System.in);
         System.out.println("Enter Item Name:");
         String name = scan.nextLine();
+        for (int i = 0; i < shoppingList.size(); i++) {
+            if (shoppingList.get(i).getName().equalsIgnoreCase(name)) {
+                System.out.println("That Item Already Exists!");
+                return;
+            }
+        }
         System.out.println("Enter Item Price:");
         Double price = scan.nextDouble();
         scan.nextLine();
